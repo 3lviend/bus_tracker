@@ -1,0 +1,2 @@
+module BusLocationsHelper
+end

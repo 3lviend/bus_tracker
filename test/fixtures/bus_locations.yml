@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bus_stop: one
+  bus_route: one
+  vehicle: one
+  latitude: 1.5
+  longitude: 1.5
+  arrived: false
+
+two:
+  bus_stop: two
+  bus_route: two
+  vehicle: two
+  latitude: 1.5
+  longitude: 1.5
+  arrived: false

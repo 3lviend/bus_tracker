@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: MyString
+  bus_stop: one
+  time: 2019-10-04 16:17:17
+  bus_route: one
+
+two:
+  day: MyString
+  bus_stop: two
+  time: 2019-10-04 16:17:17
+  bus_route: two

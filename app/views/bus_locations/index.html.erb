@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+
+<% @bus_locations.each do |key, value| %>
+<h1>Distance Bus <%= key %> with BusStop <%= BusStop.first.code %></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Bus stop</th>
+        <th>Bus route</th>
+        <th>Vehicle</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <!-- <th>Arrived</th> -->
+        <th>Distance 1</th>
+        <th>Distance 2</th>
+        <th>Run ID</th>
+        <th>Hour</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% value.last(10).each do |bus_location| %>
+        <tr>
+          <td><%= bus_location.bus_stop.try(:code) %></td>
+          <td><%= bus_location.bus_route.try(:code) %></td>
+          <td><%= bus_location.vehicle.try(:code) %></td>
+          <td><%= bus_location.latitude %></td>
+          <td><%= bus_location.longitude %></td>
+          <!-- <td><%= bus_location.arrived %></td> -->
+          <td><%= Geocoder::Calculations.distance_between([BusStop.first.latitude, BusStop.first.longitude], [bus_location.latitude, bus_location.longitude], units: :km).round(3) %> KM</td>
+          <td><%= Geocoder::Calculations.distance_between([BusStop.last.latitude, BusStop.last.longitude], [bus_location.latitude, bus_location.longitude], units: :km).round(3) %> KM</td>
+          <td><%= bus_location.run_id %></td>
+          <td><%= bus_location.created_at.strftime('%H:%M') %></td>
+          <!-- <td><%= bus_location.created_at %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br><br><br>
+<% end %>
